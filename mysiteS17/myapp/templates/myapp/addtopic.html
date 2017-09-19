@@ -1,0 +1,44 @@
+{% extends 'myapp/base.html' %}
+{% block title %}
+    Proposed topics
+{% endblock %}
+{% block body_block %}
+    <div >
+        <h2>List of Proposed Topics</h2>
+    </div>
+    <div >
+        <div >
+            <div >
+                <strong>Topics</strong>
+            </div>
+            <div >
+                {% if topiclist %}
+                <ol>
+                    {% for topic in topiclist %}
+
+                        {% if topic.get_type_display == "Topic" %}
+                            <li>{{ topic.subject}} - {{ topic.intro_course }} - ${{ topic.id }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ol>
+
+                {% else %}
+                    <strong>There are no available topics!</strong>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div >
+            <h2>You can suggest a new topic here.</h2>
+    </div>
+    <div>
+        <div >New Topic</div>
+        <div style="padding: 10px">
+            <form action="{% url 'myapp:addtopic' %}" method="post">
+                {% csrf_token %}
+                <div>{{ form.as_p }}</div>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'myapp/base.html' %}
+{% block myhdg %}
+Hello Group 7
+{% endblock %}
+
+{% block body_block %}
+     <h2>Topics</h2>
+        <ol>
+                <li> Title:  {{ topic.subject}} </li>
+                <li> People Interested:  {{ topic.num_responses}} </li>
+                <li> {% if topic.intro_course == True %}
+                Intro course     : YES <br>
+            {% else %}
+                Intro course     : No <br>
+            {% endif %} </li>
+                 <li> Average age:  {{ topic.avg_age}} </li>
+
+        </ol>
+    <form action="{% url 'myapp:addtopic' %}" method="post">
+                {% csrf_token %}
+                <div>{{ form.as_p }}</div>
+                <input type="submit" value="Submit">
+            </form>
+<p><a href="{% url 'myapp:index' %}">Index page </a></p>
+
+{% endblock %}

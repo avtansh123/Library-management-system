@@ -1,0 +1,24 @@
+{% extends 'myapp/base.html' %}
+  {% block body_block%}
+   {% if form.errors %}
+       <p>Your username and password didn't match. Please try again.</p>
+   {% endif %}
+   <form action="{% url 'myapp:user_login' %}" method="post">
+     {% csrf_token %}
+      <table>
+        <div>
+            <label>Username</label>
+
+                <input type="text" id="username" name="username"  placeholder="Username">
+
+        </div>
+        <div>
+            <label>Password</label>
+            <div>
+                <input type="password" name="password" id="password" placeholder="Password">
+            </div>
+        </div>
+      </table>
+      <input type="submit" value="login" />
+   </form>
+{% endblock %}

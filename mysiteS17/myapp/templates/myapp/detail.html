@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>My  APP</title>
+</head>
+
+<body>
+
+        <h2>Courses</h2>
+        <ol>
+                <li> Title:  {{ course.title}} </li>
+                <li> Course_Number:  {{ course.course_no}} </li>
+                 <li> Textbook:  {{ course.textbook}} </li>
+
+        </ol>
+
+
+</body>
+</html>
+{#<p><a href="/libapp/about">About page</a></p>#}
+<p><a href="{% url 'myapp:about' %}">About page</a></p>
+<p><a href="{% url 'myapp:index' %}">Index page</a></p>
